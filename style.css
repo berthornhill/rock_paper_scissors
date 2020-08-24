@@ -1,0 +1,8 @@
+body {
+    background: linear-gradient(90deg, #9600fb 0%, #00ffd0 70%);
+}
+.result {
+    font-size: 50px;
+    font-style: strong;
+    color: rgb(228, 125, 57);
+}

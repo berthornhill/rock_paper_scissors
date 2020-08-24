@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="eng">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
+    <style></style>
     <script>
         
         /* function to randomly choose rock, paper, scissors */
@@ -38,29 +42,36 @@
            var player = playerPlay()
            var opponent = computerPlay()
 
-          //  var player = "rock";
-          //  var opponent = "scissors";
+          
 
             console.log("You chose " + player);
             console.log("Your opponent chose " + opponent);
+            
+            // display each team's pick
+            p_pick.innerHTML = "You chose " + player;
+            c_pick.innerHTML = "Your opponent chose " + opponent;
+            
+            // compares picks and determines results of game
 
             if (player == opponent) {
-                return "This game was a tie!";
+                result.innerHTML = "This game was a tie!";
             } else if (((player == "rock") && (opponent == "scissors")) || ((player =="paper") && (opponent == "rock")) || ((player == "scissors") && (opponent== "paper"))) {
-                return "You win! Way to go!";
+                result.innerHTML =  "You win! Way to go!";
             } else {
-                return "You lose! Better luck next time!";
+                result.innerHTML = "You lose! Better luck next time!";
             }
         }
 
-        /* return winner */s
-
-        
+         
         
     </script>
 
-    <h1>    Play Rock Paper Scissors with Me! </h1>
+  <h1>    Play Rock Paper Scissors with Me! </h1>
      <div><button onclick="playRPS()">Click to Start Game!</button></div>
-
+    <br>
+    <div id="p_pick"></div> 
+    <div id="c_pick"></div>
+    <br>
+     <div id="result" class="result"></div>
 </body>
 </html>
