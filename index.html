@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="eng">
+<body>
+    <script>
+        
+        /* function to randomly choose rock, paper, scissors */
+        function computerPlay() {
+            var myArray = [
+            "Rock",
+            "Paper",
+            "Scissors"
+            ];
+
+            var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+
+            return randomItem.toLowerCase()
+         }
+        /* function to request rock papers or sscissors from user */ 
+
+        function playerPlay() {
+        
+            let choice = false;
+            while (choice == false) {
+                var play = prompt("Choose your weapon. Rock, Paper, or Scissors"); 
+                play = play.toLowerCase()
+                if ((play == "rock") || (play == "paper") || (play == "scissors")) {
+                    choice = true;
+                } else {
+                    choice = false;
+                }   
+            }
+            return play
+        }
+
+        /* compare player choice to computer choice */ 
+           
+        function playRPS() {
+           var player = playerPlay()
+           var opponent = computerPlay()
+
+          //  var player = "rock";
+          //  var opponent = "scissors";
+
+            console.log("You chose " + player);
+            console.log("Your opponent chose " + opponent);
+
+            if (player == opponent) {
+                return "This game was a tie!";
+            } else if (((player == "rock") && (opponent == "scissors")) || ((player =="paper") && (opponent == "rock")) || ((player == "scissors") && (opponent== "paper"))) {
+                return "You win! Way to go!";
+            } else {
+                return "You lose! Better luck next time!";
+            }
+        }
+
+        /* return winner */s
+
+        
+        
+    </script>
+
+    <h1>    Play Rock Paper Scissors with Me! </h1>
+     <div><button onclick="playRPS()">Click to Start Game!</button></div>
+
+</body>
+</html>
