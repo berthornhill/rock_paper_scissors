@@ -1,77 +1,103 @@
 <!DOCTYPE html>
 <html lang="eng">
-<head>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <style></style>
+
+    <div class="title">
+      <div></div>
+      <div><p>Play Rock Paper Scissors with Me!</p></div>
+      <div></div>
+    </div>
+    <div class="xtraspace"></div>
+    <div class="btn_rps">
+      <div>
+        <button id="rock">
+          <img src="freddie.png" />
+        </button>
+      </div>
+      <div>
+        <button id="paper">
+          <img src="paper.png" />
+        </button>
+      </div>
+      <div>
+        <button id="scissors">
+          <img src="scissors.png" />
+        </button>
+      </div>
+    </div>
+    <br />
+    <div class="choices">
+      <div id="p_pick" class="selection"></div>
+      <div class="selection"></div>
+      <div id="c_pick" class="selection"></div>
+    </div>
+    <br />
+    <div id="result" class="result"></div>
+
     <script>
-        
-        /* function to randomly choose rock, paper, scissors */
-        function computerPlay() {
-            var myArray = [
-            "Rock",
-            "Paper",
-            "Scissors"
-            ];
+      // function to randomly choose rock, paper, scissors
+      function computerPlay() {
+        var myArray = ["Rock", "Paper", "Scissors"];
 
-            var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+        var randomItem = myArray[Math.floor(Math.random() * myArray.length)];
 
-            return randomItem.toLowerCase()
-         }
-        /* function to request rock papers or sscissors from user */ 
+        return randomItem.toLowerCase();
+      }
+      // requests rock papers or scissors from user
 
-        function playerPlay() {
-        
-            let choice = false;
-            while (choice == false) {
-                var play = prompt("Choose your weapon. Rock, Paper, or Scissors"); 
-                play = play.toLowerCase()
-                if ((play == "rock") || (play == "paper") || (play == "scissors")) {
-                    choice = true;
-                } else {
-                    choice = false;
-                }   
-            }
-            return play
+      /* ORIGINAL CODE FOR playerPlay() SELECTION.
+                   let choice = false;
+                  while (choice == false) {
+                      var play = prompt("Choose your weapon. Rock, Paper, or Scissors");
+                      play = play.toLowerCase()
+                      if ((play == "rock") || (play == "paper") || (play == "scissors")) {
+                          choice = true;
+                      } else {
+                          choice = false;
+                      }
+                  }
+                  return play
+               } */
+
+      // compares player choice to computer choice
+
+      function playRPS(input) {
+        var player = input;
+        var opponent = computerPlay();
+
+        console.log("You chose " + player);
+        console.log("Your opponent chose " + opponent);
+
+        // display each team's pick
+        p_pick.innerHTML = "You chose " + player;
+        c_pick.innerHTML = "Your opponent chose " + opponent;
+
+        // compares picks and determines results of game
+
+        if (player == opponent) {
+          result.innerHTML = "This game was a tie!";
+        } else if (
+          (player == "rock" && opponent == "scissors") ||
+          (player == "paper" && opponent == "rock") ||
+          (player == "scissors" && opponent == "paper")
+        ) {
+          result.innerHTML = "You win! Way to go!";
+        } else {
+          result.innerHTML = "You lose! Better luck next time!";
         }
+      }
 
-        /* compare player choice to computer choice */ 
-           
-        function playRPS() {
-           var player = playerPlay()
-           var opponent = computerPlay()
-
-          
-
-            console.log("You chose " + player);
-            console.log("Your opponent chose " + opponent);
-            
-            // display each team's pick
-            p_pick.innerHTML = "You chose " + player;
-            c_pick.innerHTML = "Your opponent chose " + opponent;
-            
-            // compares picks and determines results of game
-
-            if (player == opponent) {
-                result.innerHTML = "This game was a tie!";
-            } else if (((player == "rock") && (opponent == "scissors")) || ((player =="paper") && (opponent == "rock")) || ((player == "scissors") && (opponent== "paper"))) {
-                result.innerHTML =  "You win! Way to go!";
-            } else {
-                result.innerHTML = "You lose! Better luck next time!";
-            }
-        }
-
-         
-        
+      // use buttons to start game
+      const buttons = document.querySelectorAll("button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          playRPS(button.id);
+        });
+      });
     </script>
-
-  <h1>    Play Rock Paper Scissors with Me! </h1>
-     <div><button onclick="playRPS()">Click to Start Game!</button></div>
-    <br>
-    <div id="p_pick"></div> 
-    <div id="c_pick"></div>
-    <br>
-     <div id="result" class="result"></div>
-</body>
+  </body>
 </html>

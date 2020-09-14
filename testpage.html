@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head> </head>
+  <body>
+    <div>
+      <button class="1">THIS IS A TEST</button>
+      <button id="2">Click Me Too</button>
+    </div>
+    <div>
+      <button class="2">The test begins</button>
+    </div>
+
+    <div>
+      <button class="3">Nowwwwwww</button>
+    </div>
+
+    <script>
+      //   const btn = document.querySelector("#btn");
+      //   btn.addEventListener("click", () => {
+      //     alert("hello world");
+      //   });
+
+      // the JavaScript file
+      const buttons = document.querySelectorAll("button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          alert(button.id);
+        });
+      });
+    </script>
+  </body>
+</html>
